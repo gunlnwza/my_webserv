@@ -1,12 +1,18 @@
-NAME := webserv
+# NAME := webserv
+NAME := request_test
 
 CC := c++
 CFLAGS := -Wall -Wextra -Werror -std=c++98
 RM := rm -rf
 
-HEADERS := 
-SRCS := main.cpp
+# HEADERS := 
+HEADERS := Request.hpp
+
+# SRCS := main.cpp
+SRCS := Request.cpp
+
 OBJS := $(SRCS:%.cpp=%.o)
+
 
 all: $(NAME)
 
