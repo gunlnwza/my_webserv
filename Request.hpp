@@ -31,7 +31,7 @@ class Request
         Request(const std::string& req_str);
 };
 
-std::ostream& operator<<(const std::ostream& os, const Request& req);
+std::ostream& operator<<(std::ostream& os, const Request& req);
 
 
 // // just an idea, but feels very promising to implement

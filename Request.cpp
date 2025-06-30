@@ -23,8 +23,6 @@ Request::~Request() {}
 
 // TODO: make it more robust, right now it is not really correct
 // NOTE: can use get_next_line idea to process line by line (with reading from client), maybe?
-
-
 void Request::parse_request_string(const std::string& req_str)
 {
     std::istringstream iss(req_str);
