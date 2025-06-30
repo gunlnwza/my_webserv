@@ -6,11 +6,12 @@ CFLAGS := -Wall -Wextra -Werror -std=c++98
 RM := rm -rf
 
 # HEADERS := 
-HEADERS := Request.hpp Response.hpp
+HEADERS := Request.hpp Response.hpp WebServer.hpp
 
 # SRCS := main.cpp
 # SRCS := Request.cpp
-SRCS := Response.cpp
+# SRCS := Response.cpp
+SRCS := WebServer.cpp main.cpp
 
 OBJS := $(SRCS:%.cpp=%.o)
 
