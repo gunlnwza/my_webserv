@@ -1,10 +1,5 @@
 #include "WebServer.hpp"
-
-void log(const std::string& msg)
-{
-    std::cout << msg << std::endl;
-}
-
+#include "Logger.hpp"
 
 int main()
 {
@@ -13,6 +8,8 @@ int main()
     web_server.setup_socket();
     web_server.wait_for_client();
     web_server.serve_client();
+
+    Logger::log("Hello world from logger");
 
     return (EXIT_SUCCESS);
 }
