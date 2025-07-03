@@ -6,7 +6,9 @@
 # include <iostream>
 # include <sstream>
 
-class Request
+# include "HTTPMessage.hpp"
+
+class Request: public HTTPMessage
 {
     private:
         std::string method, path, protocol_version;

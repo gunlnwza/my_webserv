@@ -9,7 +9,9 @@
 
 # include "Logger.hpp"
 
-class Response
+# include "HTTPMessage.hpp"
+
+class Response: public HTTPMessage
 {
     private:
         std::string protocol_version, status_code, status_message;
@@ -27,6 +29,7 @@ class Response
         const std::string& get_protocol_version() const;
         const std::string& get_status_code() const;
         const std::string& get_status_message() const;
+
         const std::map<std::string, std::string>& get_headers() const;
         const std::string& get_header_value(const std::string& key) const;
         const std::string& get_body() const;
