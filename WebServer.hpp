@@ -9,11 +9,16 @@
 # include "HTTPMessage/Request.hpp"
 # include "HTTPMessage/Response.hpp"
 
+# include "Config/WebServerConfig.hpp"
+
 class WebServer
 {
     private:
+        WebServerConfig config;
+        
         int server_fd;
         struct sockaddr_in address;
+
 
         int client_fd;
         char buffer[3000];

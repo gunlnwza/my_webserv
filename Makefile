@@ -8,11 +8,14 @@ RM := rm -rf
 # HEADERS := 
 HEADERS := WebServer.hpp \
 	utils/Logger.hpp utils/ft_utils.hpp \
-	HTTPMessage/Request.hpp HTTPMessage/Response.hpp HTTPMessage/AHTTPMessage.hpp
+	HTTPMessage/Request.hpp HTTPMessage/Response.hpp HTTPMessage/AHTTPMessage.hpp \
+	Config/WebServerConfig.hpp Config/ServerConfig.hpp Config/RouteConfig.hpp
 
-SRCS := main.cpp WebServer.cpp \
+SRCS := main.cpp \
+	WebServer.cpp \
 	utils/Logger.cpp utils/ft_utils.cpp \
-	HTTPMessage/AHTTPMessage.cpp HTTPMessage/Request.cpp HTTPMessage/Response.cpp  
+	HTTPMessage/AHTTPMessage.cpp HTTPMessage/Request.cpp HTTPMessage/Response.cpp \
+	Config/WebServerConfig.cpp Config/ServerConfig.cpp Config/RouteConfig.cpp
 # SRCS := Request.cpp
 # SRCS := Response.cpp
 # SRCS := WebServer.cpp Logger.cpp main.cpp
