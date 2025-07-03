@@ -6,12 +6,12 @@ CFLAGS := -Wall -Wextra -Werror -std=c++98
 RM := rm -rf
 
 # HEADERS := 
-HEADERS := Logger.hpp WebServer.hpp ft_utils.hpp \
+HEADERS := WebServer.hpp \
+	utils/Logger.hpp utils/ft_utils.hpp \
 	HTTPMessage/Request.hpp HTTPMessage/Response.hpp HTTPMessage/AHTTPMessage.hpp
 
-SRCS := main.cpp \
-	WebServer.cpp \
-	Logger.cpp ft_utils.cpp \
+SRCS := main.cpp WebServer.cpp \
+	utils/Logger.cpp utils/ft_utils.cpp \
 	HTTPMessage/AHTTPMessage.cpp HTTPMessage/Request.cpp HTTPMessage/Response.cpp  
 # SRCS := Request.cpp
 # SRCS := Response.cpp
