@@ -6,8 +6,8 @@
 # include <arpa/inet.h>
 # include <unistd.h>
 
-# include "Request.hpp"
-# include "Response.hpp"
+# include "HTTPMessage/Request.hpp"
+# include "HTTPMessage/Response.hpp"
 
 class WebServer
 {
