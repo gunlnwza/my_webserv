@@ -53,14 +53,15 @@ void WebServer::read_request()
 
 void WebServer::send_response()
 {
-    const std::string response =
-        "HTTP/1.1 200 OK\r\n"
-        "Content-Type: text/html\r\n"
-        "Content-Length: 36\r\n"
-        "\r\n"
-        "<html><body>Hello world</body></html>";
+    Response response;
 
-    send(this->client_fd, response.c_str(), response.size(), 0);
+    response.build();
+
+    std::string s = response.get_string();
+    Logger::log("sent:");
+    Logger::log(s);
+    
+    send(this->client_fd, s.c_str(), s.size(), 0);
 }
 
 void WebServer::serve_client()

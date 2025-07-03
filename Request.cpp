@@ -73,15 +73,15 @@ std::ostream& operator<<(std::ostream& os, const Request& req)
 }
 
 
-int main()
-{
-    const std::string s = \
-        "GET / HTTP/1.1\r\n"
-        "Host: developer.mozilla.org\r\n"
-        "Accept-Language: fr\r\n"
-        "\r\n";
+// int main()
+// {
+//     const std::string s = \
+//         "GET / HTTP/1.1\r\n"
+//         "Host: developer.mozilla.org\r\n"
+//         "Accept-Language: fr\r\n"
+//         "\r\n";
 
-    Request req(s);
-    std::cout << "parsed request: " << std::endl 
-        << req << std::endl;
-}
+//     Request req(s);
+//     std::cout << "parsed request: " << std::endl 
+//         << req << std::endl;
+// }

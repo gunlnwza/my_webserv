@@ -5,6 +5,9 @@
 # include <map>
 # include <iostream>
 # include <sstream>
+# include <fstream>
+
+# include "Logger.hpp"
 
 class Response
 {
@@ -30,6 +33,9 @@ class Response
 
         void set_header(const std::string& key, const std::string& value);
         void set_body(const std::string& body);
+
+        void build();
+        std::string get_string() const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Response& res);

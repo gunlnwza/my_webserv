@@ -9,7 +9,5 @@ int main()
     web_server.wait_for_client();
     web_server.serve_client();
 
-    Logger::log("Hello world from logger");
-
     return (EXIT_SUCCESS);
 }
