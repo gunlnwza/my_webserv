@@ -1,0 +1,21 @@
+#ifndef FT_UTILS_HPP
+# define FT_UTILS_HPP
+
+# include <string>
+
+# include <iostream>
+# include <sstream>
+# include <fstream>
+
+# include "Logger.hpp"
+
+template <typename T>
+std::string ft_to_string(const T& item)
+{
+    std::stringstream ss;
+
+    ss << item;
+    return (ss.str());
+}
+
+#endif

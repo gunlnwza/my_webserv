@@ -13,8 +13,7 @@ Request& Request::operator=(const Request& other)
     this->method = other.method;
     this->path = other.path;
     this->protocol_version = other.protocol_version;
-    this->headers = other.headers;
-    this->body = other.body;
+    AHTTPMessage::operator=(other);
     return (*this);
 }
 
@@ -49,18 +48,6 @@ Request::Request(const std::string& req_str)
 const std::string& Request::get_method() const { return (this->method); }
 const std::string& Request::get_path() const { return (this->path); }
 const std::string& Request::get_protocol_version() const { return (this->protocol_version); }
-const std::map<std::string, std::string>& Request::get_headers() const { return (this->headers); }
-
-const std::string& Request::get_header_value(const std::string& key) const
-{
-    std::map<std::string, std::string>::const_iterator it = this->headers.find(key);
-    if (it == this->headers.end())
-        throw (std::runtime_error("header not found"));
-    return (it->second);
-}
-
-const std::string& Request::get_body() const { return (this->body); }
-
 
 std::ostream& operator<<(std::ostream& os, const Request& req)
 {

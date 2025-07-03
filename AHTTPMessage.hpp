@@ -4,6 +4,8 @@
 # include <map>
 # include <string>
 
+# include "ft_utils.hpp"
+
 typedef std::map<std::string, std::string> t_headers;
 
 class AHTTPMessage
@@ -24,6 +26,7 @@ class AHTTPMessage
 
         void set_header(const std::string& key, const std::string& value);
         void set_body(const std::string& body);
+        void append_body(const std::string& str);
 };
 
 #endif

@@ -13,8 +13,7 @@ Response& Response::operator=(const Response& other)
     this->protocol_version = other.protocol_version;
     this->status_code = other.status_code;
     this->status_message = other.status_message;
-    this->headers = other.headers;
-    this->body = other.body;
+    AHTTPMessage::operator=(other);
     return (*this);
 }
 
@@ -28,37 +27,7 @@ Response::Response(const std::string& protocol_version, const std::string& statu
 const std::string& Response::get_protocol_version() const { return (this->protocol_version); }
 const std::string& Response::get_status_code() const { return (this->status_code); }
 const std::string& Response::get_status_message() const { return (this->status_message); }
-const std::map<std::string, std::string>& Response::get_headers() const { return (this->headers); }
 
-const std::string& Response::get_header_value(const std::string& key) const
-{
-    std::map<std::string, std::string>::const_iterator it = this->headers.find(key);
-    if (it == this->headers.end())
-        throw (std::runtime_error("header not found"));
-    return (it->second);
-}
-
-const std::string& Response::get_body() const { return (this->body); }
-
-void Response::set_header(const std::string& key, const std::string& value)
-{
-    this->headers[key] = value;
-}
-
-void Response::set_body(const std::string& body)
-{
-    this->body = body;
-}
-
-
-template <typename T>
-std::string ft_to_string(const T& item)
-{
-    std::stringstream ss;
-
-    ss << item;
-    return (ss.str());
-}
 
 void Response::build()
 {
@@ -73,13 +42,12 @@ void Response::build()
     while (std::getline(f, s))
     {
         Logger::log("reading: " + s);
-        this->body.append(s);
+        this->append_body(s);
     }
 
     this->set_header("Content-Type", "text/html; charset=utf-8");
-    this->set_header("Content-Length", ft_to_string(this->body.length()));
+    this->set_header("Content-Length", ft_to_string(this->get_body().length()));
     this->set_header("Connection", "close");
-    
 }
 
 std::string Response::get_string() const

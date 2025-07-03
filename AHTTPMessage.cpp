@@ -4,8 +4,9 @@
 AHTTPMessage::AHTTPMessage() {}
 
 AHTTPMessage::AHTTPMessage(const AHTTPMessage& other)
-: headers(other.headers), body(other.body)
-{}
+{
+    *this = other;
+}
 
 AHTTPMessage& AHTTPMessage::operator=(const AHTTPMessage& other)
 {
@@ -13,6 +14,8 @@ AHTTPMessage& AHTTPMessage::operator=(const AHTTPMessage& other)
     this->body = other.body;
     return (*this);
 }
+
+AHTTPMessage::~AHTTPMessage() {}
 
 
 const t_headers& AHTTPMessage::get_headers() const
@@ -42,4 +45,9 @@ void AHTTPMessage::set_header(const std::string& key, const std::string& value)
 void AHTTPMessage::set_body(const std::string& body)
 {
     this->body = body;
+}
+
+void AHTTPMessage::append_body(const std::string& str)
+{
+    this->body.append(str);
 }

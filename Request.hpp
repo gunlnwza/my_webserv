@@ -1,19 +1,12 @@
 #ifndef REQUEST_HPP
 # define REQUEST_HPP
 
-# include <string>
-# include <map>
-# include <iostream>
-# include <sstream>
+# include "AHTTPMessage.hpp"
 
-# include "HTTPMessage.hpp"
-
-class Request: public HTTPMessage
+class Request: public AHTTPMessage
 {
     private:
         std::string method, path, protocol_version;
-        std::map<std::string, std::string> headers;
-        std::string body;
 
         void parse_request_string(const std::string& req_str);
 
@@ -23,14 +16,11 @@ class Request: public HTTPMessage
         Request& operator=(const Request& other);
         ~Request();
 
+        Request(const std::string& req_str);
+
         const std::string& get_method() const;
         const std::string& get_path() const;
         const std::string& get_protocol_version() const;
-        const std::map<std::string, std::string>& get_headers() const;
-        const std::string& get_header_value(const std::string& key) const;
-        const std::string& get_body() const;
-
-        Request(const std::string& req_str);
 };
 
 std::ostream& operator<<(std::ostream& os, const Request& req);
