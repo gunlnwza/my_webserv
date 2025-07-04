@@ -15,10 +15,9 @@ class WebServer
 {
     private:
         WebServerConfig config;
-        
+
         int server_fd;
         struct sockaddr_in address;
-
 
         int client_fd;
         char buffer[3000];
@@ -31,6 +30,8 @@ class WebServer
         WebServer(const WebServer& other);
         WebServer& operator=(const WebServer& other);
         ~WebServer();
+
+        WebServer(const WebServerConfig& config);
 
         void setup_socket();
         void wait_for_client();

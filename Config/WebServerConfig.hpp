@@ -19,4 +19,6 @@ class WebServerConfig
         void add_server_config(const ServerConfig& server_config);
 };
 
+std::ostream& operator<<(std::ostream& os, const WebServerConfig& config);
+
 #endif

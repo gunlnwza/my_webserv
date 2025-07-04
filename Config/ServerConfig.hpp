@@ -29,4 +29,6 @@ class ServerConfig
         void add_route_config(const RouteConfig& config);
 };
 
+std::ostream& operator<<(std::ostream& os, const ServerConfig& config);
+
 #endif

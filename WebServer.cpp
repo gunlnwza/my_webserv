@@ -2,9 +2,7 @@
 
 
 WebServer::WebServer()
-{
-
-}
+{}
 
 WebServer::WebServer(const WebServer& other)
 {
@@ -18,8 +16,11 @@ WebServer& WebServer::operator=(const WebServer& other)
 }
 
 WebServer::~WebServer()
-{
+{}
 
+WebServer::WebServer(const WebServerConfig& config)
+{
+    this->config = config;
 }
 
 
