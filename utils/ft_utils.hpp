@@ -18,4 +18,6 @@ std::string ft_to_string(const T& item)
     return (ss.str());
 }
 
+std::string ft_strtrim(const std::string& s, char c);
+
 #endif

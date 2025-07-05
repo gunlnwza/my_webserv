@@ -8,9 +8,9 @@ typedef std::vector<RouteConfig> t_route_configs;
 class ServerConfig
 {
     private:
+        std::string host, port;
         t_strings server_names;
-        int host, port;
-        t_strings default_error_pages;
+        std::map<int, std::string> error_pages;  // status_code -> path
         size_t max_client_body_size;
         t_route_configs route_configs;
 
@@ -21,8 +21,8 @@ class ServerConfig
         ~ServerConfig();
 
         void add_server_name(const std::string& server_name);
-        void set_host(int host);
-        void set_port(int port);
+        void set_host(const std::string& host);
+        void set_port(const std::string& port);
         // void add_default_error_page(const std::string& default_error_page);
         void set_max_client_body_size(size_t max_size);
 

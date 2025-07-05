@@ -12,7 +12,7 @@ RouteConfig::RouteConfig(const RouteConfig& other)
 RouteConfig& RouteConfig::operator=(const RouteConfig& other)
 {
     this->allowed_methods = other.allowed_methods;
-    this->redirection = other.redirection;
+    this->redirections = other.redirections;
     this->root = other.root;
     this->directory_listing = other.directory_listing;
     this->default_file_if_request_is_directory = other.default_file_if_request_is_directory;

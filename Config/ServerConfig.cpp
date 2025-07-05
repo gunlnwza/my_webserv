@@ -14,7 +14,7 @@ ServerConfig& ServerConfig::operator=(const ServerConfig& other)
     this->server_names = other.server_names;
     this->host = other.host;
     this->port = other.port;
-    this->default_error_pages = other.default_error_pages;
+    this->error_pages = other.error_pages;
     this->max_client_body_size = other.max_client_body_size;
     this->route_configs = other.route_configs;
     return (*this);
@@ -29,12 +29,12 @@ void ServerConfig::add_server_name(const std::string& server_name)
     this->server_names.push_back(server_name);
 }
 
-void ServerConfig::set_host(int host)
+void ServerConfig::set_host(const std::string& host)
 {
     this->host = host;
 }
 
-void ServerConfig::set_port(int port)
+void ServerConfig::set_port(const std::string& port)
 {
     this->port = port;
 }

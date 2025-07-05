@@ -1,26 +1,19 @@
 #ifndef ROUTE_CONFIG_HPP
 # define ROUTE_CONFIG_HPP
 
-/*
-server {
-    listen
-    server_name
-}
-*/
-
-# include <iostream>
-
+# include <map>
 # include <vector>
-# include <string>
+
+# include "../utils/Path.hpp"
 
 typedef std::vector<std::string> t_strings;
 
 class RouteConfig
 {
     private:
-        std::string location;
         t_strings allowed_methods;
-        std::string redirection;  // http redirection?
+        std::string location;
+        std::map<int, std::string> redirections;  // status_code -> path; (return directive)
         std::string root;  // define a dir or file where the file should be searched
         bool directory_listing;
         std::string default_file_if_request_is_directory;  // ??? pretty long name ???
