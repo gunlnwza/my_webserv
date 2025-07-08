@@ -5,8 +5,9 @@
 # include <vector>
 
 # include "../utils/Path.hpp"
+# include "../utils/ft_utils.hpp"
 
-typedef std::vector<std::string> t_strings;
+# define INDENT "    "
 
 class RouteConfig
 {
