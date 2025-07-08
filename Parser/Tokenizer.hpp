@@ -2,7 +2,6 @@
 # define TOKENIZER_HPP
 
 # include "Tokens.hpp"
-
 # include "../utils/ft_utils.hpp"
 
 class Tokenizer

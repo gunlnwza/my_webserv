@@ -68,28 +68,43 @@ std::ostream& operator<<(std::ostream& os, const Token& token)
 }
 
 
+static void indent(std::ostream& os, int depth)
+{
+    for (int i = 0; i < depth; i++)
+        os << "    ";
+}
+
 std::ostream& operator<<(std::ostream& os, const t_tokens& tokens)
 {
-    bool first_token = true;
+    bool put_indent = true;
     int depth = 0;
 
     for (t_tokens::const_iterator it = tokens.begin(); it != tokens.end(); ++it)
     {
         t_token_type type = it->get_type();
 
+        // update indent depth
         if (type == LBRACE) depth++;
         else if (type == RBRACE) depth--;
 
-        if (first_token) {
-            for (int i = 0; i < depth; i++) os << "    ";
-            first_token = false;
+        // put indent
+        if (put_indent) {
+            indent(os, depth);
+            put_indent = false;
         }
 
+        // put LBRACE on new line + indent
+        if (type == LBRACE) {
+            os << std::endl;
+            indent(os, depth - 1);
+        }
+
+        // put token
         os << *it << " ";
 
         if (type == SEMICOLON || type == LBRACE || type == RBRACE) {
-            first_token = true;
-            os << std::endl;
+            put_indent = true; // toggle indent for next token
+            os << std::endl;  // move to next line
         }
     }
 

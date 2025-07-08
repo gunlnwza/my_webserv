@@ -1,17 +1,36 @@
 #include "Parser.hpp"
 
-
-
-bool is_grammar_correct(t_tokens& tokens)
+static bool is_braces_balanced(const t_tokens& tokens)
 {
+    int depth = 0;
+    for (t_tokens::const_iterator it = tokens.begin(); it != tokens.end(); ++it)
+    {
+        t_token_type type = it->get_type();
+        if (type == LBRACE)
+            depth++;
+        else if (type == RBRACE)
+            depth--;
+        if (depth < 0)
+            return (false);
+    }
+    return (depth == 0);
+}
+
+bool is_grammar_correct(const t_tokens& tokens)
+{
+    if (!is_braces_balanced(tokens))
+        return (false);
     return (true);
 }
 
-WebServerConfig parse_tokens(t_tokens& tokens)
+WebServerConfig parse_tokens(const t_tokens& tokens)
 {
     WebServerConfig config;
 
-
+    for (t_tokens::const_iterator it = tokens.begin(); it != tokens.end(); ++it)
+    {
+        // std::cout << *it << std::endl;
+    }
 
     return (config);
 }

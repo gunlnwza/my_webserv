@@ -1,12 +1,12 @@
 #ifndef PARSER_HPP
 # define PARSER_HPP
 
-# include "../Config/WebServerConfig.hpp"
 # include "Tokenizer.hpp"
+# include "../Config/WebServerConfig.hpp"
 
-bool is_grammar_correct(t_tokens& tokens);
+bool is_grammar_correct(const t_tokens& tokens);
 
-WebServerConfig parse_tokens(t_tokens& tokens);
+WebServerConfig parse_tokens(const t_tokens& tokens);
 
 // class Parser
 // {

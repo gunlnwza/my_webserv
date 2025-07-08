@@ -4,9 +4,14 @@ CC := c++
 CFLAGS := -Wall -Wextra -Werror -std=c++98
 RM := rm -rf
 
-HEADERS := Tokenizer.hpp Tokens.hpp ../utils/ft_utils.hpp
+HEADERS := Tokenizer.hpp Tokens.hpp Parser.hpp \
+	../Config/WebServerConfig.hpp ../Config/ServerConfig.hpp ../Config/RouteConfig.hpp \
+	../utils/ft_utils.hpp \
 
-SRCS := Tokenizer.cpp Tokens.cpp test.cpp ../utils/ft_utils.cpp
+SRCS := test.cpp \
+	Tokenizer.cpp Tokens.cpp Parser.cpp \
+	../Config/WebServerConfig.cpp ../Config/ServerConfig.cpp ../Config/RouteConfig.cpp \
+	../utils/ft_utils.cpp \
 
 OBJS := $(SRCS:%.cpp=%.o)
 

@@ -2,6 +2,7 @@
 #include <sstream>
 
 #include "Tokenizer.hpp"
+#include "Parser.hpp"
 
 // TODO: send networking materials to N'Smart
 
@@ -22,6 +23,15 @@ int main()
 
     std::cout << "tokens:" << std::endl
               << tokens << std::endl;
-   
+
+    if (!is_grammar_correct(tokens))
+    {
+        std::cout << "ERROR: grammar not correct" << std::endl;
+        return (EXIT_FAILURE);
+    }
+
+    WebServerConfig config;
+    config = parse_tokens(tokens);
+
     return (EXIT_SUCCESS);
 }
