@@ -66,3 +66,32 @@ std::ostream& operator<<(std::ostream& os, const Token& token)
         os << "(" << token.get_value() << ")";
     return (os);
 }
+
+
+std::ostream& operator<<(std::ostream& os, const t_tokens& tokens)
+{
+    bool first_token = true;
+    int depth = 0;
+
+    for (t_tokens::const_iterator it = tokens.begin(); it != tokens.end(); ++it)
+    {
+        t_token_type type = it->get_type();
+
+        if (type == LBRACE) depth++;
+        else if (type == RBRACE) depth--;
+
+        if (first_token) {
+            for (int i = 0; i < depth; i++) os << "    ";
+            first_token = false;
+        }
+
+        os << *it << " ";
+
+        if (type == SEMICOLON || type == LBRACE || type == RBRACE) {
+            first_token = true;
+            os << std::endl;
+        }
+    }
+
+    return (os);
+}

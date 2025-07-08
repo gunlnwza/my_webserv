@@ -5,8 +5,6 @@
 
 # include "../utils/ft_utils.hpp"
 
-typedef std::vector<Token> t_tokens;
-
 class Tokenizer
 {
     private:

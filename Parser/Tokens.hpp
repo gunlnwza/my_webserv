@@ -14,6 +14,7 @@ enum e_token_type {
 
 typedef enum e_token_type t_token_type;
 
+
 class Token
 {
     private:
@@ -35,6 +36,10 @@ class Token
         void set_value(const std::string& value);
 };
 
+typedef std::vector<Token> t_tokens;
+
+
 std::ostream& operator<<(std::ostream& os, const Token& token);
+std::ostream& operator<<(std::ostream& os, const t_tokens& tokens);
 
 #endif

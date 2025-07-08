@@ -15,16 +15,13 @@ int main()
 
     std::string config_str = ss.str();
     std::cout << "config_str:" << std::endl
-            << config_str << std::endl;
+              << config_str << std::endl;
 
     Tokenizer tokenizer;
     t_tokens tokens = tokenizer.tokenize(config_str);
 
-    for (t_tokens::iterator it = tokens.begin(); it != tokens.end(); ++it)
-    {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
-
+    std::cout << "tokens:" << std::endl
+              << tokens << std::endl;
+   
     return (EXIT_SUCCESS);
 }

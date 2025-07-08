@@ -1,5 +1,7 @@
 #include "Parser.hpp"
 
+
+
 bool is_grammar_correct(t_tokens& tokens)
 {
     return (true);
@@ -8,6 +10,8 @@ bool is_grammar_correct(t_tokens& tokens)
 WebServerConfig parse_tokens(t_tokens& tokens)
 {
     WebServerConfig config;
+
+
 
     return (config);
 }
