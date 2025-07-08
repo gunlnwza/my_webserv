@@ -23,14 +23,19 @@ bool is_grammar_correct(const t_tokens& tokens)
     return (true);
 }
 
+// assume everything is correct
 WebServerConfig parse_tokens(const t_tokens& tokens)
 {
-    WebServerConfig config;
+    WebServerConfig web_server_config;
+    ServerConfig server_config;
+    RouteConfig route_config;
+
+    // int depth = 0;
 
     for (t_tokens::const_iterator it = tokens.begin(); it != tokens.end(); ++it)
     {
-        // std::cout << *it << std::endl;
+
     }
 
-    return (config);
+    return (web_server_config);
 }
