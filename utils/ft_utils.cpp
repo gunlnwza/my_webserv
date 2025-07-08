@@ -8,3 +8,14 @@ std::string ft_strtrim(const std::string& s, char c)
     size_t last = s.find_last_not_of(c);
     return (s.substr(first, last - first + 1));
 }
+
+bool ft_is_number(const std::string& s)
+{
+    if (s.empty())
+        return (false);
+
+    std::string::const_iterator it = s.begin();
+    while (it != s.end() && std::isdigit(*it))
+        ++it;
+    return (it == s.end());
+}

@@ -20,4 +20,6 @@ std::string ft_to_string(const T& item)
 
 std::string ft_strtrim(const std::string& s, char c);
 
+bool ft_is_number(const std::string& s);
+
 #endif
