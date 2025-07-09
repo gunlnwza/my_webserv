@@ -83,7 +83,7 @@ std::ostream& operator<<(std::ostream& os, const t_tokens& tokens)
     {
         t_token_type type = it->get_type();
 
-        // update indent depth
+        // update depth
         if (type == LBRACE) depth++;
         else if (type == RBRACE) depth--;
 

@@ -8,13 +8,16 @@ typedef std::vector<RouteConfig> t_route_configs;
 class ServerConfig
 {
     private:
+
+    public:
         std::string host, port;
         t_strings server_names;
         std::map<int, std::string> error_pages;  // status_code -> path
         size_t max_client_body_size;
         t_route_configs route_configs;
 
-    public:
+        std::string listen, server_name;
+
         ServerConfig();
         ServerConfig(const ServerConfig& other);
         ServerConfig& operator=(const ServerConfig& other);

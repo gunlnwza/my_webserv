@@ -57,9 +57,7 @@ t_tokens Tokenizer::tokenize(const std::string& config_str)
         char c = config_str[i];
 
         if (std::isspace(c))
-        {
             this->flush_current_token();
-        }
         else if (c == ';' || c == '{' || c == '}')
         {
             this->flush_current_token();

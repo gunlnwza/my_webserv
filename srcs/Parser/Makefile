@@ -4,9 +4,9 @@ CC := c++
 CFLAGS := -Wall -Wextra -Werror -std=c++98
 RM := rm -rf
 
-HEADERS := Tokenizer.hpp Tokens.hpp Parser.hpp \
-	../Config/WebServerConfig.hpp ../Config/ServerConfig.hpp ../Config/RouteConfig.hpp \
-	../utils/ft_utils.hpp \
+HEADERS := ../../headers/Parser/Tokenizer.hpp ../../headers/Parser/Tokens.hpp ../../headers/Parser/Parser.hpp \
+	../../headers/Config/WebServerConfig.hpp ../../headers/Config/ServerConfig.hpp ../../headers/Config/RouteConfig.hpp \
+	../../headers/utils/ft_utils.hpp \
 
 SRCS := test.cpp \
 	Tokenizer.cpp Tokens.cpp Parser.cpp \
