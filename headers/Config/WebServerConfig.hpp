@@ -23,6 +23,8 @@ class WebServerConfig
         ~WebServerConfig();
 
         void add_server_config(const ServerConfig& server_config);
+
+        const t_server_configs& get_server_configs() const;
 };
 
 std::ostream& operator<<(std::ostream& os, const WebServerConfig& config);
