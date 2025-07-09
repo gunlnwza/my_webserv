@@ -26,8 +26,25 @@ std::ostream& operator<<(std::ostream& os, const WebServerConfig& config)
     t_server_configs::const_iterator it_end = server_configs.end();
 
     os << "WebServerConfig(" << std::endl;
+    
     for (; it != it_end; ++it)
         os << *it << std::endl;
     os << ")";
     return (os);
+}
+
+
+void WebServerConfig::parse_config(const std::string& config_str)
+{
+    Tokenizer tokenizer;
+    t_tokens tokens = tokenizer.tokenize(config_str);
+
+    ServerConfig s;
+    t_tokens::const_iterator it = tokens.begin();
+    t_tokens::const_iterator it_end = tokens.end();
+    while (it != it_end)
+    {
+        s.parse_server(it, it_end);
+        this->add_server_config(s);
+    }
 }

@@ -1,20 +1,27 @@
 #ifndef SERVER_CONFIG_HPP
 # define SERVER_CONFIG_HPP
 
-# include "RouteConfig.hpp"
+# include "LocationBlock.hpp"
 
-typedef std::vector<RouteConfig> t_route_configs;
+typedef std::vector<LocationBlock> t_location_blocks;
 
 class ServerConfig
 {
     private:
+        void add_server_name(const std::string& server_name);
+        void set_host(const std::string& host);
+        void set_port(const std::string& port);
+        // void add_default_error_page(const std::string& default_error_page);
+        void set_max_client_body_size(size_t max_size);
+
+        void add_location_block(const LocationBlock& config);
 
     public:
         std::string host, port;
         t_strings server_names;
         std::map<int, std::string> error_pages;  // status_code -> path
         size_t max_client_body_size;
-        t_route_configs route_configs;
+        t_location_blocks location_blocks;
 
         std::string listen, server_name;
 
@@ -23,17 +30,12 @@ class ServerConfig
         ServerConfig& operator=(const ServerConfig& other);
         ~ServerConfig();
 
-        void add_server_name(const std::string& server_name);
-        void set_host(const std::string& host);
-        void set_port(const std::string& port);
-        // void add_default_error_page(const std::string& default_error_page);
-        void set_max_client_body_size(size_t max_size);
+        const t_location_blocks& get_location_blocks() const;
+        const t_strings& get_server_names() const;
 
-        void add_route_config(const RouteConfig& config);
-
-        const t_route_configs& get_route_configs() const;
+        void parse_server(t_tokens_const_it& it, const t_tokens_const_it& it_end);
 };
 
-std::ostream& operator<<(std::ostream& os, const ServerConfig& config);
+std::ostream& operator<<(std::ostream& os, const ServerConfig& s);
 
 #endif

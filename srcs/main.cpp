@@ -4,7 +4,7 @@ static WebServerConfig read_config()
 {
     WebServerConfig config;
     ServerConfig server_config;
-    RouteConfig route_config;
+    LocationBlock route_config;
 
     route_config.set_location("/");
     route_config.set_root("/var/www/html");
@@ -12,7 +12,7 @@ static WebServerConfig read_config()
     route_config.add_allowed_method("POST");
 
     server_config.set_port("8080");
-    server_config.add_route_config(route_config);
+    server_config.add_location_block(route_config);
 
     config.add_server_config(server_config);
 

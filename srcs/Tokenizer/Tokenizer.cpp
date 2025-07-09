@@ -1,4 +1,4 @@
-#include "../../headers/Parser/Tokenizer.hpp"
+#include "../../headers/Tokenizer/Tokenizer.hpp"
 
 
 Tokenizer::Tokenizer() {}
@@ -56,7 +56,13 @@ t_tokens Tokenizer::tokenize(const std::string& config_str)
     {
         char c = config_str[i];
 
-        if (std::isspace(c))
+        if (c == '#')
+        {
+            this->flush_current_token();
+            while (config_str[i] != '\n')
+                ++i;
+        }
+        else if (std::isspace(c))
             this->flush_current_token();
         else if (c == ';' || c == '{' || c == '}')
         {

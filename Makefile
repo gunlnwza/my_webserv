@@ -7,13 +7,13 @@ RM := rm -rf
 HEADERS := headers/WebServer.hpp \
 	headers/utils/Logger.hpp headers/utils/ft_utils.hpp headers/utils/Path.hpp \
 	headers/HTTPMessage/Request.hpp headers/HTTPMessage/Response.hpp headers/HTTPMessage/AHTTPMessage.hpp \
-	headers/Config/WebServerConfig.hpp headers/Config/ServerConfig.hpp headers/Config/RouteConfig.hpp \
+	headers/Config/WebServerConfig.hpp headers/Config/ServerConfig.hpp headers/Config/LocationBlock.hpp \
 
 SRCS := srcs/main.cpp \
 	srcs/WebServer.cpp \
 	srcs/utils/Logger.cpp srcs/utils/ft_utils.cpp srcs/utils/Path.cpp \
 	srcs/HTTPMessage/AHTTPMessage.cpp srcs/HTTPMessage/Request.cpp srcs/HTTPMessage/Response.cpp \
-	srcs/Config/WebServerConfig.cpp srcs/Config/ServerConfig.cpp srcs/Config/RouteConfig.cpp \
+	srcs/Config/WebServerConfig.cpp srcs/Config/ServerConfig.cpp srcs/Config/LocationBlock.cpp \
 
 OBJS := $(SRCS:%.cpp=%.o)
 

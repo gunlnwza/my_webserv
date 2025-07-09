@@ -37,7 +37,7 @@ class Token
 };
 
 typedef std::vector<Token> t_tokens;
-
+typedef t_tokens::const_iterator t_tokens_const_it;
 
 std::ostream& operator<<(std::ostream& os, const Token& token);
 std::ostream& operator<<(std::ostream& os, const t_tokens& tokens);

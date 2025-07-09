@@ -1,8 +1,7 @@
 #include <fstream>
 #include <sstream>
 
-#include "../../headers/Parser/Tokenizer.hpp"
-#include "../../headers/Parser/Parser.hpp"
+#include "../../headers/Config/WebServerConfig.hpp"
 
 // TODO: send networking materials to N'Smart
 
@@ -28,13 +27,13 @@ int main()
     std::cout << "[ Parsing Tokens ]" << std::endl;
     WebServerConfig config;
     try {
-        config = parse_tokens(tokens);
+        config.parse_config(config_str);
     } catch (const std::runtime_error& e) {
         std::cout << "Error: " << e.what() << std::endl;
         return (EXIT_FAILURE);
     }
-    // std::cout << "config: " << std::endl
-            //   << config << std::endl;
+    std::cout << "config: " << std::endl
+              << config << std::endl;
 
     return (EXIT_SUCCESS);
 }

@@ -12,7 +12,7 @@ ServerConfig& ServerConfig::operator=(const ServerConfig& other)
     this->port = other.port;
     this->error_pages = other.error_pages;
     this->max_client_body_size = other.max_client_body_size;
-    this->route_configs = other.route_configs;
+    this->location_blocks = other.location_blocks;
     return (*this);
 }
 
@@ -29,20 +29,63 @@ void ServerConfig::set_port(const std::string& port) { this->port = port; }
 
 void ServerConfig::set_max_client_body_size(size_t max_size) { this->max_client_body_size = max_size; }
 
-void ServerConfig::add_route_config(const RouteConfig& config) { this->route_configs.push_back(config); }
+void ServerConfig::add_location_block(const LocationBlock& config) { this->location_blocks.push_back(config); }
 
 
-const t_route_configs& ServerConfig::get_route_configs() const { return (this->route_configs); }
+const t_location_blocks& ServerConfig::get_location_blocks() const { return (this->location_blocks); }
+const t_strings& ServerConfig::get_server_names() const { return (this->server_names); }
 
-std::ostream& operator<<(std::ostream& os, const ServerConfig& config)
+std::ostream& operator<<(std::ostream& os, const ServerConfig& s)
 {
-    t_route_configs route_configs = config.get_route_configs();
-    t_route_configs::const_iterator it = route_configs.begin();
-    t_route_configs::const_iterator it_end = route_configs.end();
+    t_location_blocks ls = s.get_location_blocks();
 
     os << INDENT << "ServerConfig(" << std::endl;
-    for (; it != it_end; ++it)
+    os << INDENT << INDENT << "listen: " << s.host << ":" << s.port << std::endl;
+    os << INDENT << INDENT << "server_name: "; put_strings(os, s.get_server_names()); os << std::endl;
+    for (t_location_blocks::const_iterator it = ls.begin(); it != ls.end(); ++it)
         os << *it << std::endl;
     os << INDENT << ")";
     return (os);
+}
+
+
+void ServerConfig::parse_server(t_tokens_const_it& it, const t_tokens_const_it& it_end)
+{
+    LocationBlock l;
+
+    expect(SERVER, it);
+    ++it;
+    expect(LBRACE, it);
+    ++it;
+    while (it != it_end && !token_is(RBRACE, it))
+    {
+        if (token_is(LISTEN, it))
+        {
+            ++it;
+            expect(NUMBER, it);
+            this->host = "0.0.0.0";  // TODO: implement spliting listen <host>:<port>
+            this->port = it->get_value();
+            ++it;
+            expect(SEMICOLON, it);
+            ++it;
+        }
+        else if (token_is(SERVER_NAME, it))
+        {
+            ++it;
+            expect(IDENTIFIER, it);
+            this->add_server_name(it->get_value());
+            ++it;
+            expect(SEMICOLON, it);
+            ++it;
+        }
+        else if (token_is(LOCATION, it))
+        {
+            l.parse_location(it, it_end);
+            this->add_location_block(l);
+        }
+        else
+            throw (std::runtime_error("not implemented token: \"" + it->get_value() + "\""));
+    }
+    expect(RBRACE, it);
+    ++it;
 }
