@@ -66,11 +66,6 @@ std::string Response::get_string() const
 
 std::ostream& operator<<(std::ostream& os, const Response& res)
 {
-    // os << res.get_protocol_version() << " " << res.get_status_code() << " " << res.get_status_message() << std::endl;
-    // for (std::map<std::string, std::string>::const_iterator it = res.get_headers().begin(); it != res.get_headers().end(); ++it)
-    //     os << it->first << ": " << it->second << std::endl;
-    // os << std::endl;
-    // os << res.get_body() << std::endl;
     os << res.get_string();
     return (os);
 }

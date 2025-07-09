@@ -30,6 +30,8 @@ class ServerConfig
         void set_max_client_body_size(size_t max_size);
 
         void add_route_config(const RouteConfig& config);
+
+        const t_route_configs& get_route_configs() const;
 };
 
 std::ostream& operator<<(std::ostream& os, const ServerConfig& config);
