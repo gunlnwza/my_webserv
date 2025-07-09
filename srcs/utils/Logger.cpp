@@ -1,4 +1,4 @@
-#include "Logger.hpp"
+#include "../../headers/utils/Logger.hpp"
 
 void Logger::log(const std::string& message)
 {

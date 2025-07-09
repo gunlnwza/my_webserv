@@ -1,8 +1,8 @@
 #include <fstream>
 #include <sstream>
 
-#include "Tokenizer.hpp"
-#include "Parser.hpp"
+#include "../../headers/Parser/Tokenizer.hpp"
+#include "../../headers/Parser/Parser.hpp"
 
 // TODO: send networking materials to N'Smart
 

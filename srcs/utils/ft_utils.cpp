@@ -1,4 +1,4 @@
-#include "ft_utils.hpp"
+#include "../../headers/utils/ft_utils.hpp"
 
 std::string ft_strtrim(const std::string& s, char c)
 {

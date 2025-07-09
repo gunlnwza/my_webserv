@@ -1,24 +1,19 @@
 NAME := webserv
-# NAME := test
 
 CC := c++
 CFLAGS := -Wall -Wextra -Werror -std=c++98
 RM := rm -rf
 
-# HEADERS := 
-HEADERS := WebServer.hpp \
-	utils/Logger.hpp utils/ft_utils.hpp utils/Path.hpp \
-	HTTPMessage/Request.hpp HTTPMessage/Response.hpp HTTPMessage/AHTTPMessage.hpp \
-	Config/WebServerConfig.hpp Config/ServerConfig.hpp Config/RouteConfig.hpp
+HEADERS := headers/WebServer.hpp \
+	headers/utils/Logger.hpp headers/utils/ft_utils.hpp headers/utils/Path.hpp \
+	headers/HTTPMessage/Request.hpp headers/HTTPMessage/Response.hpp headers/HTTPMessage/AHTTPMessage.hpp \
+	headers/Config/WebServerConfig.hpp headers/Config/ServerConfig.hpp headers/Config/RouteConfig.hpp \
 
-SRCS := main.cpp \
-	WebServer.cpp \
-	utils/Logger.cpp utils/ft_utils.cpp utils/Path.cpp \
-	HTTPMessage/AHTTPMessage.cpp HTTPMessage/Request.cpp HTTPMessage/Response.cpp \
-	Config/WebServerConfig.cpp Config/ServerConfig.cpp Config/RouteConfig.cpp
-# SRCS := Request.cpp
-# SRCS := Response.cpp
-# SRCS := WebServer.cpp Logger.cpp main.cpp
+SRCS := srcs/main.cpp \
+	srcs/WebServer.cpp \
+	srcs/utils/Logger.cpp srcs/utils/ft_utils.cpp srcs/utils/Path.cpp \
+	srcs/HTTPMessage/AHTTPMessage.cpp srcs/HTTPMessage/Request.cpp srcs/HTTPMessage/Response.cpp \
+	srcs/Config/WebServerConfig.cpp srcs/Config/ServerConfig.cpp srcs/Config/RouteConfig.cpp \
 
 OBJS := $(SRCS:%.cpp=%.o)
 
@@ -38,5 +33,6 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
 
 .PHONY: all clean fclean re

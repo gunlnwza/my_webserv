@@ -1,4 +1,4 @@
-#include "WebServerConfig.hpp"
+#include "../../headers/Config/WebServerConfig.hpp"
 
 
 WebServerConfig::WebServerConfig()
