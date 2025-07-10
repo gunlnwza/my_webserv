@@ -14,9 +14,9 @@ class WebServerConfig
         
         t_default_servers default_servers;
 
+    public:
         void add_server_config(const ServerConfig& server_config);
 
-    public:
         WebServerConfig();
         WebServerConfig(const WebServerConfig& other);
         WebServerConfig& operator=(const WebServerConfig& other);

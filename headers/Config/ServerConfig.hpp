@@ -8,13 +8,6 @@ typedef std::vector<LocationBlock> t_location_blocks;
 class ServerConfig
 {
     private:
-        void add_server_name(const std::string& server_name);
-        void set_host(const std::string& host);
-        void set_port(const std::string& port);
-        // void add_default_error_page(const std::string& default_error_page);
-        void set_max_client_body_size(size_t max_size);
-
-        void add_location_block(const LocationBlock& config);
 
     public:
         std::string host, port;
@@ -24,6 +17,14 @@ class ServerConfig
         t_location_blocks location_blocks;
 
         std::string listen, server_name;
+
+        void add_server_name(const std::string& server_name);
+        void set_host(const std::string& host);
+        void set_port(const std::string& port);
+        // void add_default_error_page(const std::string& default_error_page);
+        void set_max_client_body_size(size_t max_size);
+
+        void add_location_block(const LocationBlock& config);
 
         ServerConfig();
         ServerConfig(const ServerConfig& other);

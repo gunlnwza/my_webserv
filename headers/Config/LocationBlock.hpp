@@ -23,6 +23,12 @@ class LocationBlock
 
         std::string index;
 
+    public:
+        LocationBlock();
+        LocationBlock(const LocationBlock& other);
+        LocationBlock& operator=(const LocationBlock& other);
+        ~LocationBlock();
+
         void set_location(const std::string& location);
         void add_allowed_method(const std::string& method);
         // void add_redirection();
@@ -30,12 +36,6 @@ class LocationBlock
         void set_root(const std::string& root);
         void set_directory_listing(bool do_list);
         // void set_default_file_if_request_is_directory();
-
-    public:
-        LocationBlock();
-        LocationBlock(const LocationBlock& other);
-        LocationBlock& operator=(const LocationBlock& other);
-        ~LocationBlock();
 
         const std::string& get_location() const;
         const std::string& get_root() const;
