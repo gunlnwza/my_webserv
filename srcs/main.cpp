@@ -4,9 +4,8 @@ int main()
 {
     WebServer web_server("configs/test.conf");
 
-    web_server.setup_socket();
-    web_server.wait_for_client();
-    web_server.serve_client();
+    web_server.init();
+    web_server.run();
 
     return (EXIT_SUCCESS);
 }

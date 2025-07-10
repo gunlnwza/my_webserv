@@ -19,7 +19,7 @@ OBJDIR_MODULES := $(OBJDIR)/srcs $(MODULES:%=$(OBJDIR)/srcs/%)
 MAIN := srcs/main.cpp
 
 # add class sources here
-CLASS_SRCS := srcs/WebServer.cpp \
+CLASS_SRCS := srcs/WebServer.cpp srcs/SocketManager.cpp \
 	srcs/utils/Logger.cpp srcs/utils/ft_utils.cpp srcs/utils/Path.cpp \
 	srcs/HTTPMessage/AHTTPMessage.cpp srcs/HTTPMessage/Request.cpp srcs/HTTPMessage/Response.cpp \
 	srcs/Config/WebServerConfig.cpp srcs/Config/ServerConfig.cpp srcs/Config/LocationBlock.cpp \

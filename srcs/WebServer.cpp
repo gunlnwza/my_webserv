@@ -18,50 +18,13 @@ WebServer::WebServer(const std::string& config_str) { this->config.parse_config(
 WebServer::WebServer(const WebServerConfig& config) { this->config = config; }
 
 
-void WebServer::setup_socket()
+void WebServer::init()
 {
-    this->server_fd = socket(AF_INET, SOCK_STREAM, 0);
-
-    this->address.sin_family = AF_INET;
-    this->address.sin_addr.s_addr = INADDR_ANY;
-    this->address.sin_port = htons(8000);
-
-    int opt = 1;
-    setsockopt(this->server_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
-
-    int addrlen = sizeof(this->address);
-    bind(this->server_fd, (struct sockaddr*)&this->address, addrlen);
-
-    listen(this->server_fd, SOMAXCONN);
+    this->socket_manager.setup_socket();
 }
 
-void WebServer::wait_for_client()
+void WebServer::run()
 {
-    int addrlen = sizeof(address);
-    this->client_fd = accept(this->server_fd, (struct sockaddr*)&this->address, (socklen_t*)&addrlen);
-}
-
-void WebServer::read_request()
-{
-    read(this->client_fd, this->buffer, 3000);
-}
-
-void WebServer::send_response()
-{
-    Response response;
-
-    response.build();
-
-    std::string s = response.get_string();
-    Logger::log("sent:");
-    Logger::log(s);
-    
-    send(this->client_fd, s.c_str(), s.size(), 0);
-}
-
-void WebServer::serve_client()
-{
-    this->read_request();
-    this->send_response();
-    close(this->client_fd);
+    this->socket_manager.wait_for_client();
+    this->socket_manager.serve_client();
 }
