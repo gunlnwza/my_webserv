@@ -1,7 +1,7 @@
 #ifndef WEB_SERVER_HPP
 # define WEB_SERVER_HPP
 
-# include "Config/WebServerConfig.hpp"
+# include "../Config/WebServerConfig.hpp"
 # include "SocketManager.hpp"
 
 class WebServer

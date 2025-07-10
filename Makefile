@@ -14,18 +14,19 @@ BOLD_BLUE := \033[1;34m
 
 
 OBJDIR := build
-MODULES := Logger utils HTTPMessage Config Tokenizer
+MODULES := Config HTTPMessage Logger Tokenizer utils WebServer
 OBJDIR_MODULES := $(OBJDIR)/srcs $(MODULES:%=$(OBJDIR)/srcs/%)
 
 MAIN := srcs/main.cpp
 
 # add class sources here
-CLASS_SRCS := srcs/WebServer.cpp srcs/SocketManager.cpp \
-	srcs/Logger/Logger.cpp \
-	srcs/utils/ft_utils.cpp srcs/utils/Path.cpp \
-	srcs/HTTPMessage/AHTTPMessage.cpp srcs/HTTPMessage/Request.cpp srcs/HTTPMessage/Response.cpp \
+CLASS_SRCS := \
 	srcs/Config/WebServerConfig.cpp srcs/Config/ServerConfig.cpp srcs/Config/LocationBlock.cpp \
+	srcs/HTTPMessage/AHTTPMessage.cpp srcs/HTTPMessage/Request.cpp srcs/HTTPMessage/Response.cpp \
+	srcs/Logger/Logger.cpp \
 	srcs/Tokenizer/Tokenizer.cpp srcs/Tokenizer/Tokens.cpp \
+	srcs/utils/ft_utils.cpp srcs/utils/Path.cpp \
+	srcs/WebServer/WebServer.cpp srcs/WebServer/SocketManager.cpp \
 
 SRCS := $(MAIN) $(CLASS_SRCS)
 OBJS := $(SRCS:%.cpp=$(OBJDIR)/%.o)
@@ -63,6 +64,11 @@ fclean: clean
 re: fclean all
 
 debug:
+	@echo $(OBJDIR_MODULES)
+	@echo
+	@echo $(SRCS)
+	@echo
 	@echo $(HEADERS)
+	@echo
 
 .PHONY: all clean fclean re debug

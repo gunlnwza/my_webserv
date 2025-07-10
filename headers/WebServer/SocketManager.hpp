@@ -7,8 +7,8 @@
 # include <arpa/inet.h>
 # include <unistd.h>
 
-# include "HTTPMessage/Request.hpp"
-# include "HTTPMessage/Response.hpp"
+# include "../HTTPMessage/Request.hpp"
+# include "../HTTPMessage/Response.hpp"
 
 class SocketManager
 {
