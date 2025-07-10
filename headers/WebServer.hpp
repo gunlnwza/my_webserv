@@ -11,17 +11,21 @@
 
 # include "Config/WebServerConfig.hpp"
 
+# include "SocketManager.hpp"
+
 class WebServer
 {
     private:
         WebServerConfig config;
+
+        // SocketManager socket_manager;
 
         int server_fd;
         struct sockaddr_in address;
 
         int client_fd;
         char buffer[3000];
-
+ 
         void read_request();
         void send_response();
 
@@ -31,6 +35,7 @@ class WebServer
         WebServer& operator=(const WebServer& other);
         ~WebServer();
 
+        WebServer(const std::string& config_str);
         WebServer(const WebServerConfig& config);
 
         void setup_socket();

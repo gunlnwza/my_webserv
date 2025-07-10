@@ -14,21 +14,21 @@ BOLD_BLUE := \033[1;34m
 
 OBJDIR := build
 MODULES := utils HTTPMessage Config Tokenizer
+OBJDIR_MODULES := $(OBJDIR)/srcs $(MODULES:%=$(OBJDIR)/srcs/%)
 
-HEADERS := headers/WebServer.hpp \
-	headers/utils/Logger.hpp headers/utils/ft_utils.hpp headers/utils/Path.hpp \
-	headers/HTTPMessage/Request.hpp headers/HTTPMessage/Response.hpp headers/HTTPMessage/AHTTPMessage.hpp \
-	headers/Config/WebServerConfig.hpp headers/Config/ServerConfig.hpp headers/Config/LocationBlock.hpp \
-	headers/Tokenizer/Tokenizer.hpp headers/Tokenizer/Tokens.hpp \
+MAIN := srcs/main.cpp
 
-SRCS := srcs/main.cpp srcs/WebServer.cpp \
+# add class sources here
+CLASS_SRCS := srcs/WebServer.cpp \
 	srcs/utils/Logger.cpp srcs/utils/ft_utils.cpp srcs/utils/Path.cpp \
 	srcs/HTTPMessage/AHTTPMessage.cpp srcs/HTTPMessage/Request.cpp srcs/HTTPMessage/Response.cpp \
 	srcs/Config/WebServerConfig.cpp srcs/Config/ServerConfig.cpp srcs/Config/LocationBlock.cpp \
 	srcs/Tokenizer/Tokenizer.cpp srcs/Tokenizer/Tokens.cpp \
 
+SRCS := $(MAIN) $(CLASS_SRCS)
 OBJS := $(SRCS:%.cpp=$(OBJDIR)/%.o)
-OBJDIR_MODULES := $(OBJDIR)/srcs $(MODULES:%=$(OBJDIR)/srcs/%)
+CLASS_HEADERS := $(CLASS_SRCS:srcs/%.cpp=headers/%.hpp)  # class headers must also be present
+HEADERS := $(CLASS_HEADERS)
 
 
 all:  $(NAME)
@@ -60,5 +60,7 @@ fclean: clean
 
 re: fclean all
 
+debug:
+	@echo $(HEADERS)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re debug
