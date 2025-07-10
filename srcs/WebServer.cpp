@@ -13,9 +13,14 @@ WebServer& WebServer::operator=(const WebServer& other)
 
 WebServer::~WebServer() {}
 
-WebServer::WebServer(const std::string& config_str) { this->config.parse_config(config_str); }
 
 WebServer::WebServer(const WebServerConfig& config) { this->config = config; }
+
+WebServer::WebServer(const std::string& filename)
+{
+    std::string config_str = get_file_content(filename);
+    this->config.parse_config(config_str);
+}
 
 
 void WebServer::init()
@@ -25,6 +30,5 @@ void WebServer::init()
 
 void WebServer::run()
 {
-    this->socket_manager.wait_for_client();
-    this->socket_manager.serve_client();
+    this->socket_manager.run_event_loop();
 }

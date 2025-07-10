@@ -31,18 +31,14 @@ const std::string& Response::get_status_message() const { return (this->status_m
 
 void Response::build()
 {
-    this->protocol_version = "HTTP/1.1";
-    this->status_code = "200";
-    this->status_message = "OK";
+    this->set_header("Content-Type", "text/html; charset=utf-8");
 
-    // this->set_header("Content-Type", "text/html; charset=utf-8");
-
-    std::ifstream f("website/index.html");
+    std::ifstream f("www/index.html");
     std::string s;
     while (std::getline(f, s))
     {
-        Logger::log("reading: " + s);
-        this->append_body(s);
+        // Logger::log("reading: " + s);
+        this->append_body(s + "\n");
     }
 
     this->set_header("Content-Type", "text/html; charset=utf-8");

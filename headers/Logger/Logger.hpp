@@ -10,4 +10,10 @@ class Logger
         static void log(const std::string& message);
 };
 
+class TimeLogger;
+
+class FileLogger;
+
+class TerminalLogger;
+
 #endif

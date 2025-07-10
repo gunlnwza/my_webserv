@@ -7,13 +7,7 @@
 
 int main()
 {
-    std::cout << "[ Loading config file ]" << std::endl;
-    std::ifstream infile("../../configs/test.conf");
-    std::string s;
-    std::stringstream ss;
-    while (std::getline(infile, s))
-        ss << s << std::endl;
-
+    
     std::string config_str = ss.str();
     std::cout << "config_str:" << std::endl
               << config_str << std::endl;

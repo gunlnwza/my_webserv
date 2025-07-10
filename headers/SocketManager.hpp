@@ -1,6 +1,8 @@
 #ifndef SOCKET_MANAGER_HPP
 # define SOCKET_MANAGER_HPP
 
+# include <set>
+
 # include <sys/socket.h>
 # include <arpa/inet.h>
 # include <unistd.h>
@@ -14,11 +16,17 @@ class SocketManager
         int server_fd;
         struct sockaddr_in address;
 
-        int client_fd;
-        char buffer[3000];
+        fd_set read_fds;
+        int max_fd;
 
-        void read_request();
-        void send_response();
+        std::set<int> client_fds;
+
+        // void read_request();
+        // void send_response();
+
+        void set_read_fds();
+        void update_client_fds();
+        void serve_clients();
 
     public:
         SocketManager();
@@ -27,8 +35,11 @@ class SocketManager
         ~SocketManager();
 
         void setup_socket();
-        void wait_for_client();
-        void serve_client();
+        void run_event_loop();
+
+        // void wait_for_client();
+        // void serve_client();
+
 };
 
 #endif

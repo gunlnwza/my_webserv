@@ -1,7 +1,8 @@
 NAME := webserv
 
 CC := c++
-CFLAGS := -Wall -Wextra -Werror -std=c++98
+# CFLAGS := -Wall -Wextra -Werror -std=c++98
+CFLAGS := -Wall -Wextra -std=c++98
 RM := rm -rf
 
 RESET := \033[0m
@@ -13,14 +14,15 @@ BOLD_BLUE := \033[1;34m
 
 
 OBJDIR := build
-MODULES := utils HTTPMessage Config Tokenizer
+MODULES := Logger utils HTTPMessage Config Tokenizer
 OBJDIR_MODULES := $(OBJDIR)/srcs $(MODULES:%=$(OBJDIR)/srcs/%)
 
 MAIN := srcs/main.cpp
 
 # add class sources here
 CLASS_SRCS := srcs/WebServer.cpp srcs/SocketManager.cpp \
-	srcs/utils/Logger.cpp srcs/utils/ft_utils.cpp srcs/utils/Path.cpp \
+	srcs/Logger/Logger.cpp \
+	srcs/utils/ft_utils.cpp srcs/utils/Path.cpp \
 	srcs/HTTPMessage/AHTTPMessage.cpp srcs/HTTPMessage/Request.cpp srcs/HTTPMessage/Response.cpp \
 	srcs/Config/WebServerConfig.cpp srcs/Config/ServerConfig.cpp srcs/Config/LocationBlock.cpp \
 	srcs/Tokenizer/Tokenizer.cpp srcs/Tokenizer/Tokens.cpp \

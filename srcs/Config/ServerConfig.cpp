@@ -41,7 +41,7 @@ std::ostream& operator<<(std::ostream& os, const ServerConfig& s)
 
     os << INDENT << "ServerConfig(" << std::endl;
     os << INDENT << INDENT << "listen: " << s.host << ":" << s.port << std::endl;
-    os << INDENT << INDENT << "server_name: "; put_strings(os, s.get_server_names()); os << std::endl;
+    os << INDENT << INDENT << "server_name: " << s.get_server_names() << std::endl;
     for (t_location_blocks::const_iterator it = ls.begin(); it != ls.end(); ++it)
         os << *it << std::endl;
     os << INDENT << ")";

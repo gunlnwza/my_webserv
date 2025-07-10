@@ -10,14 +10,15 @@ class WebServer
         WebServerConfig config;
         SocketManager socket_manager;
 
-    public:
         WebServer();
         WebServer(const WebServer& other);
         WebServer& operator=(const WebServer& other);
+        
+    public:
         ~WebServer();
 
-        WebServer(const std::string& config_str);
         WebServer(const WebServerConfig& config);
+        WebServer(const std::string& config_str);
 
         void init();
         void run();

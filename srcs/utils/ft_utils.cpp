@@ -13,25 +13,18 @@ bool ft_is_number(const std::string& s)
 {
     if (s.empty())
         return (false);
-
     std::string::const_iterator it = s.begin();
     while (it != s.end() && std::isdigit(*it))
         ++it;
     return (it == s.end());
 }
 
-void put_strings(std::ostream& os, const t_strings& strings, const std::string& sep)
+std::string get_file_content(const std::string& filename)
 {
-    for (t_strings::const_iterator it = strings.begin(); it != strings.end(); ++it)
-    {
-        if ((it + 1) != strings.end())
-            os << *it << sep;
-        else
-            os << *it;
-    }
-}
-
-void put_strings(std::ostream& os, const t_strings& strings)
-{
-    put_strings(os, strings, " ");
+    std::ifstream infile(filename);
+    std::string s;
+    std::stringstream ss;
+    while (std::getline(infile, s))
+        ss << s << std::endl;
+    return (ss.str());
 }

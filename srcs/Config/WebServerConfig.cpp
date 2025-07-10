@@ -26,7 +26,6 @@ std::ostream& operator<<(std::ostream& os, const WebServerConfig& config)
     t_server_configs::const_iterator it_end = server_configs.end();
 
     os << "WebServerConfig(" << std::endl;
-    
     for (; it != it_end; ++it)
         os << *it << std::endl;
     os << ")";

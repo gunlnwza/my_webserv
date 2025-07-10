@@ -8,13 +8,13 @@ class Response: public AHTTPMessage
     private:
         std::string protocol_version, status_code, status_message;
 
-    public:
         Response();
         Response(const Response& other);
         Response& operator=(const Response& other);
-        ~Response();
 
+    public:
         Response(const std::string& protocol_version, const std::string& status_code, const std::string& status_message);
+        ~Response();
 
         const std::string& get_protocol_version() const;
         const std::string& get_status_code() const;
