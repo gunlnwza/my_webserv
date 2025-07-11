@@ -10,6 +10,8 @@
 # include "../HTTPMessage/Request.hpp"
 # include "../HTTPMessage/Response.hpp"
 
+# include "../Config/WebServerConfig.hpp"
+
 class SocketManager
 {
     private:
@@ -34,7 +36,7 @@ class SocketManager
         SocketManager& operator=(const SocketManager& other);
         ~SocketManager();
 
-        void setup_socket();
+        void setup_socket(const WebServerConfig& config);
         void run_event_loop();
 
         // void wait_for_client();

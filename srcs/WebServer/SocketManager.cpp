@@ -14,8 +14,9 @@ SocketManager& SocketManager::operator=(const SocketManager& other)
 SocketManager::~SocketManager() {}
 
 
-void SocketManager::setup_socket()
+void SocketManager::setup_socket(const WebServerConfig& config)
 {
+    (void) config;
     // std::cout << "setup_socket" << std::endl;
     this->server_fd = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -96,6 +97,7 @@ void SocketManager::serve_clients()
 
             std::string s = response.get_string();
             ssize_t bytes_sent = send(fd, s.c_str(), s.size(), 0);
+            (void) bytes_sent;
             std::cout << "sent: " << std::endl;
             std::cout << s << std::endl;
         }

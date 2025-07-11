@@ -25,7 +25,7 @@ WebServer::WebServer(const std::string& filename)
 
 void WebServer::init()
 {
-    this->socket_manager.setup_socket();
+    this->socket_manager.setup_socket(this->config);
 }
 
 void WebServer::run()

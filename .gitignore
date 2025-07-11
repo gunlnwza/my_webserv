@@ -2,6 +2,7 @@
 .vscode
 __pycache__
 
+*.d
 *.o
 *.txt
 

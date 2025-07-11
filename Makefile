@@ -1,8 +1,7 @@
 NAME := webserv
 
-CC := c++
-# CFLAGS := -Wall -Wextra -Werror -std=c++98
-CFLAGS := -Wall -Wextra -std=c++98
+CXX := c++
+CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -MMD -MP
 RM := rm -rf
 
 RESET := \033[0m
@@ -40,12 +39,12 @@ mkdir:
 	mkdir -p $(OBJDIR_MODULES)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(BOLD_GREEN)✅ Built successfully:$(RESET) $(NAME)"
 
-$(OBJDIR)/%.o: %.cpp $(HEADERS) | $(OBJDIR) $(OBJDIR_MODULES)
+$(OBJDIR)/%.o: %.cpp | $(OBJDIR) $(OBJDIR_MODULES)
 	@echo "$(BOLD_BLUE)🚀 Compiling:$(RESET) $<"
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJDIR) $(OBJDIR_MODULES):
 	@if [ ! -d "$@" ]; then \
@@ -64,11 +63,8 @@ fclean: clean
 re: fclean all
 
 debug:
-	@echo $(OBJDIR_MODULES)
-	@echo
-	@echo $(SRCS)
-	@echo
 	@echo $(HEADERS)
-	@echo
 
 .PHONY: all clean fclean re debug
+
+-include $(OBJS:.o=.d)
